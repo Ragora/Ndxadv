@@ -1,0 +1,132 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+if (loadingLibs == nil or loadingLibs == false) then term.clear() term.setCursorPos(1,2) term.write("Just a data file!") return end
+
+-- Item table
+local Items = 
+{
+	---------------------------------------------------------
+	--	Character Specific Items
+	--	Certain characters have special items
+	---------------------------------------------------------
+
+	-- Stuffed Komodo Dragon
+	Komodo =
+	{
+		-- Name
+		Name = "Stuffed Komodo Dragon",
+		-- Description
+		Description = "A stuffed komodo dragon.",
+		-- Weapon Status
+		WeaponType = "MELEE", -- For the giggles
+			-- Minimum Damage
+		DamageMin = 0,
+		-- Maximum Damage
+		DamageMax = 0,
+		-- Draw Messages
+		DrawMessages = 
+		{
+			"You wield a stuffed animal and look like a bafoon.",
+			"In your attempt to look badass drawing a stuffed animal, you humiliate yourself.",
+			"You hold the stuffed komodo dragon by the tail as if it were a deadly blade."
+		},
+		 -- Use Messages
+		UseMessages = 
+		{
+			"You bonk your target in the head with the stuffed animal.",
+			"In your attempt to knock your target out, you humiliate yourself. Good job."
+		}
+	},
+
+	-- Nyoka's Short sword
+	NyokaShortSword = 
+	{
+		-- Name
+		Name = "Nyoka's Short Sword",
+		-- Description
+		Description = "Made from seraded steel, this blade can cut you easily.",
+		-- Draw Messages
+		DrawMessages =
+		{
+			"You wield the sword of fallen Nyoka.",
+			"You pull the sword from its holster, admiring the dangerous blade as you remember that perilous fight .."
+		},
+		-- Use Messages
+		UseMessages = 
+		{
+			"You swing the sword, it moves with ease at your target."
+		},
+
+		-- Weapon Status
+		WeaponType = "MELEE",
+		-- Minimum Damage
+		DamageMin = 10,
+		-- Maximum Damage
+		DamageMax = 30
+	},
+
+	-- Nyoka's Revolver
+	NyokaRevolver =
+	{
+		-- Name
+		Name = "Nyoka's .44 Magnum",
+		-- Description
+		Description = "A large revolver that fires .44 calibre bullets.",
+		-- Draw Messages
+		DrawMessages = 
+		{
+			"You wield the magnum at hand.",
+			"You remove Nyoka's .44 magnum from its holster."
+		},
+		-- Use Messages
+		UseMessages = 
+		{
+			"You fire the .44 magnum, it has a massive recoil that nearly hits you in the face.",
+			"The unexpected recoil scares the living shit out of you, but not more so than its intended target."
+		},
+		-- Weapon Status
+		WeaponType = "RANGED",
+		-- Minimum Damage
+		DamageMin = 50,
+		-- Maximum Damage
+		DamageMax = 70,
+		-- Range 
+		Range = 5 -- Characters
+	},
+		
+	---------------------------------------------------------
+	--	Generic Items begin here, they don't belong
+	--	to any character in specific.
+	---------------------------------------------------------
+
+	-- Generic Short Sword
+	ShortSword = 
+	{
+		-- Name
+		Name = "Short Sword",
+		-- Description
+		Description = "A small sword. Once wielded by a Draakan knight.",
+		-- Draw Messages
+		DrawMessages = 
+		{
+				"You wield the short sword."
+		},
+		-- Use Messages
+		UseMessages = 
+		{
+				"You swing the short sword."
+		},
+		-- Weapon Status
+		WeaponType = "MELEE",
+		-- Minimum Damage
+		DamageMin = 10,
+		-- Maximum Damage
+		DamageMax = 20
+	}
+} -- End Group Items
+
+return Items

@@ -1,0 +1,149 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+term.clear() -- clear console
+
+-- Printat Function
+function printAt(char, x, y)
+	term.setCursorPos(x,y) -- Set the cursor to this position
+	term.write(char) -- Write the string
+	term.setCursorPos(1,1) -- Reset the cursor position
+end
+
+-- Specify the program install directory
+local programInstall = "rom/programs/ndxadv/"
+-- Specify what libs we should load prior to doing anything
+local Libs = { "config.dat", "data/characters.dat", "data/people.dat", "data/items.dat", "data/entities.dat", "timer.lua", "input.lua" }
+-- Counts how many libs we loaded (helps in printing information)
+local LibC = table.getn(Libs)
+
+-- Store key strokes here
+local keyPressed = { }
+
+---------------------------------------------------------
+--	Load our libs in the proper order as specified
+---------------------------------------------------------
+loadingLibs = true -- Used to let the files know we're just loading them
+for i,v in ipairs(Libs) do
+	local Test = io.open(programInstall .. v)
+	if (Test == nil) then
+		printAt("Unable to load file: ", 1,i+2)
+		printAt( programInstall .. v, 1, i+3)
+		printAt("Bad install?", 1, i+4)
+		return
+	end
+	printAt("Loading " .. programInstall .. v, 1, i+2)
+	dofile(programInstall .. v)
+end 
+loadingLibs = false -- Don't need this anymore
+-- Print the game name (from config.dat)
+printAt(GameInfo.displayName, 1,2)
+
+---------------------------------------------------------
+--	"VMem" initialization
+--	We setup the memory we use to store our
+--	graphics, this is used by any draw functions
+---------------------------------------------------------
+printAt("Initialising Video Memory ...",1,LibC+3)
+local VMem = {}
+local screenWidth,screenHeight = term.getSize()
+for x=1,screenWidth do
+	VMem[x] = {}
+	for y=1,screenHeight do
+		VMem[x][y] = {}
+	end
+end
+
+---------------------------------------------------------
+--	Init World Memory
+--	We setup the 2D array that the world memory
+--	is at (different from the "video memory"
+---------------------------------------------------------
+printAt("Initialising World Memory ...",1,LibC+4)
+local Map = {}
+for x=1,SystemSettings.worldWidth do
+	Map[x] = {}
+	for y=1,SystemSettings.worldHeight do
+		Map[x][y] = {}
+	end
+end
+
+---------------------------------------------------------
+--	Game logic Starts here
+---------------------------------------------------------
+
+function drawGUI()
+end
+
+function drawWorld()
+end
+
+function draw()
+end
+
+function update(PCX, PCY, HX, HY, Map)
+	--term.clear()
+		-- Iterate across X axis
+	for X = 1, screenWidth do
+		-- Iterate Across Y axis
+		for Y = 1, screenHeight do
+			-- Make sure something is even there and display it
+			if (Map[X][Y] ~= nil) then printAt(Map[X][Y],X,Y) end
+		end -- End Y Iteration
+	end -- End X iteration
+	--printAt("C",PCX,PCY)
+	--printAt("+",PCX+HX,PCY+HY)
+end
+
+-- Init World objects
+
+
+---------------------------------------------------------
+--	Main
+--	This is our "entry point" of the program.
+--	Being a C++ programmer at first, I'm more
+-- 	Comfortable with this setup but you can
+--	rearrange as you please!
+---------------------------------------------------------
+local gameRunning = false
+function main()
+	term.clear() -- Clear the terminal
+	term.setCursorPos(1,1) -- Make sure we're at default cursor pos
+	gameRunning = true
+
+	-- Simple player character
+	local PCX = math.floor(screenWidth/2)
+	local PCY = math.floor(screenHeight/2)
+	local Char = "C"
+	local HeadingX = 0 -- Down
+	local HeadingY = -1
+	
+	--local mTime = os.startTimer(0)
+	while gameRunning ~= false do
+		print("O_O")
+		local event, p1, p2 = os.pullEvent()
+		-- Update the timer
+		--Timer.update(event, p1)
+		-- Update input
+		--Input.update()
+		if (Input.keyPressed(GameControls.moveUp)) then return end
+	end -- End Loop
+end -- End function main
+
+---------------------------------------------------------
+--	Let the information displayed linger 
+--	Lasts 6 seconds then calls the main
+--	function of the program
+---------------------------------------------------------
+printAt("Game will start in 6 seconds ...",1,LibC+5)
+
+--local sTime = os.startTimer(6)
+-- This is just to keep the 6 second timer moving, this loop becomes inactive when main() is called
+--while true do
+	--local event, p1, p2 = os.pullEvent()
+	--if event == "timer" and p1 == sTime then main() break end
+--end
+main()

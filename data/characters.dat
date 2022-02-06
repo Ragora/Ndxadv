@@ -1,0 +1,53 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+if (loadingLibs == nil or loadingLibs == false) then term.clear() term.setCursorPos(1,2) term.write("Just a data file!") return end
+
+-- Character table, this only ever have one instance
+Characters = 
+{
+	-- Ragora <3
+	Ragora = 
+	{
+		-- Name
+		Name = "Ragora",
+		-- Species
+		Species = "Red Dragon",
+		-- Things happen if you try to kill him :o
+		Health = -1,
+		-- Description
+		Description = "A harmless red dragon.",
+		-- Inventory
+		Inventory = { Komodo },
+		-- Symbol
+		Symbol = "R",
+		-- Hostile Status
+		Hostile = false, -- If you set this to true, you're a huge idiot.
+		-- Position
+		Position = { X = 5, Y = 5 }
+	},
+
+	-- Nyoka
+	Nyoka =
+	{
+		-- Name
+		Name = "Nyoka",
+		-- Species
+		Species = "Blue Draakan",
+		-- Health
+		Health = 100,
+		-- Description
+		Description = "A rather dangerous looking Draakan stares back at you.",
+		-- Inventory
+		Inventory = { NyokaShortSword, NyokaRevolver },
+		-- Symbol
+		Symbol = "N",
+		-- Hostile Status
+		Hostile = false, -- You better not piss her off o-o
+		-- Position
+		Position = { X = 8, Y = 5 }
+	}
+} -- End Group Characters

@@ -1,0 +1,137 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+if (loadingLibs == nil or loadingLibs == false) then term.clear() term.setCursorPos(1,2) term.write("Just a data file!") return end
+
+-- People table, generic interactive characters/objects
+People = 
+{
+	-- Generic Draakan
+	Draakan = 
+	{
+		-- Name
+		Name = "Some Draakan",
+		-- Species
+		Species = "Draakan",
+		-- Health
+		Health = 100,
+		-- Description
+		Description = "A Draakan, whom of which you do not recognise.",
+		-- Inventory
+		Inventory = { },
+		-- Symbol
+		Symbol = "D",
+		-- Hostile Status
+		Hostile = false
+	},
+
+	-- Draakan Knight
+	DraakanKnight =
+	{
+		-- Name
+		Name = "Draakan Knight",
+		-- Species
+		Species = "Draakan",
+		-- Health
+		Health = 200, -- Armor
+		-- Description
+		Description = "A heavily armored Draakan.",
+		-- Inventory
+		Inventory = { ShortSword },
+		-- Symbol
+		Symbol = "K",
+		-- Hostile Status
+		Hostile = false
+	}
+} -- End Group People
+
+---------------------------------------------------------
+--	Scripting for Generic Draakan
+---------------------------------------------------------
+
+-- Called every frame
+function People.Draakan.update()
+end
+
+-- Called when something decides to pass through
+function People.Draakan.onPassed(other)
+end
+
+-- Called when the person dies
+function People.Draakan.onDeath()
+end
+
+-- Called when this character has to draw itself
+function People.Draakan.draw()
+end
+
+-- Not necessarily required.
+function People.Draakan.onCreate()
+end
+
+---------------------------------------------------------
+--	Scripting for Draakan Knight
+---------------------------------------------------------
+
+-- Called every frame
+function People.DraakanKnight.update()
+end
+
+-- Called when something decides to pass through
+function People.DraakanKnight.onPassed(other)
+end
+
+-- Called when the person dies
+function People.DraakanKnight.onDeath()
+end
+
+-- Called when this character has to draw itself
+function People.DraakanKnight.draw()
+end
+
+-- Not necessarily required.
+function People.DraakanKnight.onCreate()
+end
+
+---------------------------------------------------------
+--	Scriplet function for creating people
+--	Instances. IE: Do not touch :)
+---------------------------------------------------------
+function createPerson(Name)
+	-- Return false showing something is wrong
+	if People[Name] == nil then return false end
+	-- Create the new character
+	local nChar = 
+	{
+		-- Set the name
+		Name = People[Name].Name,
+		-- Set the species
+		Species = People[Name].Species,
+		-- Set the Health
+		Health = People[Name].Health,
+		-- Set the Description
+		Description = People[Name].Description,
+		-- Set the inventory
+		Inventory = People[Name].Inventory,
+		-- Set the symbol
+		Symbol = People[Name].Symbol,
+		-- Set the hostility status
+		Hostile = People[Name].Hostile,
+		-- Set the position
+		Position = { X = 0, Y = 0 },
+
+		-- Copy over functions
+		update = People[Name].update,
+		onPassed = People[Name].onPassed,
+		onDeath = People[Name].onDeath,
+		draw = People[Name].draw,
+		onCreate = People[Name].onCreate
+	}
+
+	if nChar.onCreate ~= nil then nChar.onCreate() end
+	return nChar
+end
+	

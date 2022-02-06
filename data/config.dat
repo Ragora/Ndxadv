@@ -1,0 +1,87 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+if (loadingLibs == nil or loadingLibs == false) then term.clear() term.setCursorPos(1,2) term.write("Just a data file!") return end
+
+---------------------------------------------------------
+--	Game information Settings
+---------------------------------------------------------
+GameInfo = 
+{
+	-- Game Name
+	Name = "ndxadv",
+	-- Display name
+	displayName = "ndxadv Copyright (c) 2012 The DarkDragonDX",
+	-- Author
+	Author = "DarkDragonDX"
+	-- How long the startup screen waits in seconds
+	display_wait = 6
+}
+		
+---------------------------------------------------------
+--	Control Configuration Settings
+--	Change these settings for your needs
+--	Though I don't necessarily see why you'd need to
+---------------------------------------------------------
+GameControls = 
+{
+	-- The button for moving up once
+	moveUp = 17,
+	-- The button for moving down once
+	moveDown = 31,
+	-- The button for moving left once
+	moveLeft = 30,
+	-- The button for moving right once
+	moveRight = 32,
+
+	-- The button for looking up
+	lookUp = 0,
+	-- The button for looking down
+	lookDown = 0,
+	-- The button for looking left
+	lookLeft = 0,
+	-- The button for looking right
+	lookRight = 0
+}
+
+---------------------------------------------------------
+--	Character Configuration Settings
+--	Change these settings for your needs!
+---------------------------------------------------------
+PlayerSettings = 
+{
+	-- Name
+	Name = "Character",
+	-- Species
+	Species = "Draakan",
+	-- Starting Health
+	Health = 100,
+	-- Starting Inventory
+	Inventory = { },
+	-- Staring Money
+	Money = 100, -- Some gold
+	-- Symbol
+	Symbol = "C"
+}
+
+---------------------------------------------------------
+--	Game Configuration Settings
+--	Change these settings for your needs
+--	Note: Any map data that attempts to write
+--	out of the world width and height will
+--	cause the game to halt from a Lua exception.
+---------------------------------------------------------
+SystemSettings =
+{
+	-- The Size of the notification area at the bottom
+	-- of the screen (in lines)
+	notificationAreaSize = 3,
+	-- The World Width (in characters)
+	worldWidth = 500,
+	-- The world height (in characters)
+	worldHeight = 500
+}
+

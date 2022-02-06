@@ -1,0 +1,26 @@
+---------------------------------------------------------
+--	ndxadv
+--	An experiment of the Dark Dragon DX
+--	Copyright (c) 2012 The Dark Dragon DX
+---------------------------------------------------------
+
+if (loadingLibs == nil or loadingLibs == false) then term.clear() term.setCursorPos(1,2) term.write("Just a data file!") return end
+
+-- Entity Object table. (walls, etc)
+Entities =
+{
+	-- Standard Stone Wall
+	Wall = 
+	{
+		-- Name
+		Name = "Stone Wall",
+		-- Description
+		Description = "A stone wall. Nothing out of the ordinary here.",
+		-- Health
+		Health = 9999, -- Can break eventually
+		-- Symbol
+		Symbol = "|",
+		-- Mark Passable Status
+		Passable = false
+	}
+} -- End Group Entities
